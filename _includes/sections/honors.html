@@ -1,0 +1,29 @@
+{% assign p = include.p %}
+<h3 style="font-family:var(--serif);margin-bottom:1rem">Honors &amp; prizes</h3>
+<ul class="timeline" style="margin-bottom:2rem">
+  {% for h in p.honors %}
+  <li><span class="when">{{ h.when }}</span><strong>{{ h.title }}</strong><br>
+    <span style="color:var(--ink2);font-size:.93rem">{{ h.org }}</span></li>
+  {% endfor %}
+</ul>
+
+<h3 style="font-family:var(--serif);margin-bottom:1rem">Committee service</h3>
+<ul class="card-grid" style="margin-bottom:2rem">
+  {% for c in p.committee_service %}
+  <li class="card">
+    <p class="card-meta">{{ c.date_range }}</p>
+    <h3>{{ c.title }}</h3>
+    <p>{{ c.description }}</p>
+  </li>
+  {% endfor %}
+</ul>
+
+<h3 style="font-family:var(--serif);margin-bottom:1rem">Professional societies &amp; peer review</h3>
+<ul class="chip-grid" style="margin-bottom:2rem">
+  {% for s in p.societies_and_review %}<li>{{ s }}</li>{% endfor %}
+</ul>
+
+<h3 style="font-family:var(--serif);margin-bottom:1rem">Licenses &amp; certifications</h3>
+<ul class="chip-grid">
+  {% for l in p.licenses %}<li>{{ l }}</li>{% endfor %}
+</ul>

@@ -1,0 +1,32 @@
+{% assign p = include.p %}
+<p style="margin-bottom:.5rem;color:var(--ink2)">{{ p.beyond.intro_html }}</p>
+{% if p.beyond.placeholder_note %}<p style="margin-bottom:2rem;font-size:.85rem;color:var(--ink2)"><em>{{ p.beyond.placeholder_note }}</em></p>{% endif %}
+
+<h3 style="font-family:var(--serif);margin-bottom:1rem">Running &amp; marathons</h3>
+<p style="margin-bottom:.75rem;color:var(--ink2)">{{ p.beyond.running.intro_html }}</p>
+<ul class="card-grid" style="margin-bottom:2rem">
+  {% for it in p.beyond.running.items %}
+  <li class="card"><p class="card-meta">{{ it.meta }}</p><h3>{{ it.title }}</h3><p>{{ it.description }}</p></li>
+  {% endfor %}
+</ul>
+
+<h3 style="font-family:var(--serif);margin-bottom:1rem">Painting</h3>
+<p style="margin-bottom:1rem;color:var(--ink2)">{{ p.beyond.painting.intro_html }}</p>
+<ul class="card-grid" style="margin-bottom:2rem">
+  {% for it in p.beyond.painting.items %}
+  <li class="card"><p class="card-meta">{{ it.meta }}</p><h3>{{ it.title }}</h3><p>{{ it.description }}</p></li>
+  {% endfor %}
+</ul>
+
+<h3 style="font-family:var(--serif);margin-bottom:1rem">Gallery</h3>
+<p style="margin-bottom:.75rem;font-size:.88rem;color:var(--ink2)">Drop your own images by replacing the placeholder cards with <code>&lt;img&gt;</code> tags pointing to your files.</p>
+<div class="gallery">
+  {% for g in p.beyond.gallery %}
+  <div class="gallery-card"><span class="gallery-icon">{{ g.icon }}</span><span>{{ g.label }}</span></div>
+  {% endfor %}
+</div>
+
+<h3 style="font-family:var(--serif);margin-top:2rem;margin-bottom:.75rem">Other interests</h3>
+<ul class="chip-grid">
+  {% for x in p.beyond.other_interests %}<li>{{ x }}</li>{% endfor %}
+</ul>

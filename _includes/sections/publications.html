@@ -1,0 +1,76 @@
+{% assign p = include.p %}
+{% assign pubs_sorted = include.pubs_sorted %}
+{% assign years = include.years %}
+{% assign feat = include.features %}
+<p style="margin-bottom:1.25rem;color:var(--ink2)">
+  From <code>_data/publications.yml</code>. Citation counts via
+  {% assign scholar2 = p.links | where: 'key','scholar' | first %}
+  <a href="{{ scholar2.url }}">Google Scholar</a> — edit the <code>citations</code>
+  field in that file to keep them current.
+</p>
+
+{% assign pub_types = pubs_sorted | map: 'type' | uniq | sort %}
+{% if feat.publication_search or feat.publication_filters %}
+<div class="pub-controls">
+  {% if feat.publication_search %}
+  <input type="search" id="pub-search" placeholder="Search title, author, venue…" aria-label="Search publications">
+  {% endif %}
+  {% if feat.publication_filters %}
+  <select id="pub-year" aria-label="Filter by year">
+    <option value="">All years</option>
+    {% for y in years %}<option>{{ y }}</option>{% endfor %}
+  </select>
+  <select id="pub-type" aria-label="Filter by type">
+    <option value="">All types</option>
+    {% for t in pub_types %}<option value="{{ t }}">{{ t | capitalize }}</option>{% endfor %}
+  </select>
+  {% endif %}
+</div>
+{% endif %}
+
+<p class="pub-count" id="pub-count"></p>
+<ul class="pub-list" id="pub-list">
+  {% for pub in pubs_sorted %}
+  {% assign venue = pub.journal | default: pub.venue %}
+  {% assign search_blob = pub.title | append: " " | append: pub.authors | join: ', ' | append: " " | append: venue | downcase %}
+  <li class="pub" data-year="{{ pub.year }}" data-type="{{ pub.type }}" data-search="{{ search_blob | escape }}">
+    <p class="pub-title">
+      <a href="{% if pub.doi %}https://doi.org/{{ pub.doi }}{% elsif pub.pmid %}https://pubmed.ncbi.nlm.nih.gov/{{ pub.pmid }}/{% else %}#{% endif %}">{{ pub.title }}</a>
+    </p>
+    <p class="pub-authors">
+      {% assign n = pub.authors | size %}
+      {% if n <= 6 %}
+        {% for a in pub.authors %}{% if a contains "Chauhan" %}<strong>{{ a }}</strong>{% else %}{{ a }}{% endif %}{% unless forloop.last %}, {% endunless %}{% endfor %}
+      {% else %}
+        {% assign n_minus_1 = n | minus: 1 %}
+        {% for a in pub.authors limit:3 %}{% if a contains "Chauhan" %}<strong>{{ a }}</strong>{% else %}{{ a }}{% endif %}{% unless forloop.last %}, {% endunless %}{% endfor %}
+        {% assign he_idx = -1 %}
+        {% for a in pub.authors %}{% if a contains "Chauhan" %}{% assign he_idx = forloop.index0 %}{% endif %}{% endfor %}
+        {% if he_idx > 2 and he_idx < n_minus_1 %}, … <strong>{{ pub.authors[he_idx] }}</strong>{% endif %}
+        , … {{ pub.authors | last }}
+      {% endif %}
+    </p>
+    <p class="pub-meta">
+      {{ venue }} · {{ pub.year }}{% if pub.pmid %} · PMID {{ pub.pmid }}{% endif %}
+      {% if pub.citations and pub.citations > 0 %} · <span class="pub-cites">{{ pub.citations }} citation{% if pub.citations != 1 %}s{% endif %}</span>{% endif %}
+    </p>
+    <div class="pub-actions">
+      {% if pub.doi %}<a href="https://doi.org/{{ pub.doi }}">DOI</a>{% endif %}
+      {% if pub.pmid %}<a href="https://pubmed.ncbi.nlm.nih.gov/{{ pub.pmid }}/">PubMed</a>{% endif %}
+      {% if feat.bibtex_export %}<button class="bibtex-btn" onclick="toggleBibtex(this)">BibTeX</button>{% endif %}
+    </div>
+    {% if feat.bibtex_export %}
+    <pre class="bibtex-block">@{% if pub.type == 'conference' %}inproceedings{% else %}article{% endif %}{ {{- pub.key -}},
+  title   = {{ '{' }}{{ pub.title }}{{ '}' }},
+  author  = {{ '{' }}{{ pub.authors | join: ' and ' }}{{ '}' }},
+{% if pub.journal %}  journal = {{ '{' }}{{ pub.journal }}{{ '}' }},
+{% endif %}{% if pub.venue %}  booktitle = {{ '{' }}{{ pub.venue }}{{ '}' }},
+{% endif %}  year    = {{ '{' }}{{ pub.year }}{{ '}' }}{% if pub.doi %},
+  doi     = {{ '{' }}{{ pub.doi }}{{ '}' }}{% endif %}{% if pub.pmid %},
+  pmid    = {{ '{' }}{{ pub.pmid }}{{ '}' }}{% endif %}
+
+}</pre>
+    {% endif %}
+  </li>
+  {% endfor %}
+</ul>

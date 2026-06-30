@@ -1,0 +1,29 @@
+title: Pankaj Kumar Chauhan, PhD
+description: >-
+  Postdoctoral fellow in computational biology and bioinformatics,
+  Genitourinary Medical Oncology — Research, UT MD Anderson Cancer Center.
+  Germline cancer risk variants, RNA-seq, body composition outcomes, and
+  structural bioinformatics.
+url: "https://chauhan2987.github.io"                 # e.g. "https://yourusername.github.io" (no trailing slash)
+baseurl: ""              # e.g. "/reponame" if NOT using a username.github.io repo
+
+# ---- Theme / plugins -------------------------------------------------
+# No external theme: this site uses its own _layouts/_includes so the
+# design matches the original. Plugins below are all on GitHub Pages'
+# safe-mode allowlist, so they work with zero extra configuration:
+# https://pages.github.com/versions/
+plugins:
+  - jekyll-seo-tag
+  - jekyll-sitemap
+
+# ---- Build behaviour --------------------------------------------------
+markdown: kramdown
+permalink: pretty
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - README.md
+  - requirements.txt
+  - scripts
+  - vendor
+  - node_modules

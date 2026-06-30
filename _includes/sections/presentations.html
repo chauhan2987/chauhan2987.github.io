@@ -1,0 +1,32 @@
+{% assign p = include.p %}
+{% if p.presentations.international.size > 0 %}
+<h3 style="font-family:var(--serif);margin-bottom:1rem">International</h3>
+<ul class="timeline" style="margin-bottom:1.75rem">
+  {% for item in p.presentations.international %}
+  <li><span class="when">{{ item.when }}</span><strong>{{ item.title }}</strong><br>
+    <span style="color:var(--ink2);font-size:.93rem">{{ item.venue }}</span></li>
+  {% endfor %}
+</ul>
+{% endif %}
+
+{% if p.presentations.national.size > 0 %}
+<h3 style="font-family:var(--serif);margin-bottom:1rem">National</h3>
+<ul class="timeline" style="margin-bottom:1.75rem">
+  {% for item in p.presentations.national %}
+  <li><span class="when">{{ item.when }}</span><strong>{{ item.title }}</strong><br>
+    <span style="color:var(--ink2);font-size:.93rem">{{ item.venue }}</span></li>
+  {% endfor %}
+</ul>
+{% endif %}
+
+{% if p.presentations.local.size > 0 %}
+<h3 style="font-family:var(--serif);margin-bottom:1rem">Local</h3>
+<ul class="timeline" style="margin-bottom:1.75rem">
+  {% for item in p.presentations.local %}
+  <li><span class="when">{{ item.when }}</span><strong>{{ item.title }}</strong><br>
+    <span style="color:var(--ink2);font-size:.93rem">{{ item.venue }}</span></li>
+  {% endfor %}
+</ul>
+{% endif %}
+
+<p style="color:var(--ink2)"><a href="#contact">Get in touch →</a></p>

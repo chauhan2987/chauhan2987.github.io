@@ -1,0 +1,14 @@
+{% assign p = include.p %}
+<dl class="metrics-grid">
+  <div class="metric-card"><dt>Publications</dt><dd>{{ include.pub_count }}</dd></div>
+  <div class="metric-card"><dt>Total citations</dt><dd class="amber">{{ include.total_citations }}</dd></div>
+  <div class="metric-card"><dt>h-index</dt><dd>{{ include.h_index }}</dd></div>
+  <div class="metric-card"><dt>i10-index</dt><dd>{{ include.i10_index }}</dd></div>
+  <div class="metric-card"><dt>First-author papers</dt><dd>{{ include.first_author_count }}</dd></div>
+  <div class="metric-card"><dt>Years in research</dt><dd>{{ include.years_active }}+</dd></div>
+</dl>
+<p class="metrics-note">
+  {{ p.metrics_note }}
+  {% assign scholar = p.links | where: 'key','scholar' | first %}
+  {% if scholar.url != "" %} &nbsp;·&nbsp; <a href="{{ scholar.url }}">Google Scholar profile</a>{% endif %}
+</p>

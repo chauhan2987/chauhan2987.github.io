@@ -1,0 +1,12 @@
+{% assign p = include.p %}
+<p style="margin-bottom:1.5rem;color:var(--ink2)">{{ p.software.intro_html }}</p>
+<ul class="card-grid">
+  {% for r in p.software.repos %}
+  <li class="card">
+    <p class="card-meta">{{ r.meta }}</p>
+    <h3>{{ r.name }}</h3>
+    <p>{{ r.description }}</p>
+    <a class="card-link" href="{{ r.url }}">View on GitHub →</a>
+  </li>
+  {% endfor %}
+</ul>

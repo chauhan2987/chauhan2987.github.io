@@ -1,0 +1,26 @@
+{% assign p = include.p %}
+<div class="about-grid">
+  <div class="about-body">
+    {% for para in p.about.paragraphs_html %}
+      <p style="margin-bottom:1rem">{{ para }}</p>
+    {% endfor %}
+    <h3 style="margin-bottom:.75rem;font-family:var(--serif)">All research keywords</h3>
+    <ul class="tag-grid">
+      {% for k in p.about.keywords %}<li>{{ k }}</li>{% endfor %}
+    </ul>
+  </div>
+  <aside class="about-sidebar">
+    <h3>Position</h3>
+    <ul>{% for x in p.about.position %}<li>{{ x }}</li>{% endfor %}</ul>
+    <h3>Education</h3>
+    <ul>{% for x in p.about.education %}<li>{{ x }}</li>{% endfor %}</ul>
+    <h3>Links</h3>
+    <ul>
+      {% for l in p.links %}
+        {% if l.show_in_sidebar and l.url != "" %}<li><a href="{{ l.url }}">{{ l.label }}</a></li>{% endif %}
+      {% endfor %}
+    </ul>
+    <h3>Skills (from project work)</h3>
+    <ul>{% for x in p.about.skills %}<li>{{ x }}</li>{% endfor %}</ul>
+  </aside>
+</div>

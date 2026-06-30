@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{ site.data.profile.name }} — Bioinformatics & Computational Biology</title>
+<meta name="description" content="{{ site.description }}">
+<meta name="keywords" content="{{ site.data.profile.about.keywords | join: ', ' }}">
+<meta property="og:type" content="profile">
+<meta property="og:title" content="{{ site.data.profile.name }} — Bioinformatics & Computational Biology">
+<meta property="og:description" content="{{ site.description }}">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="{{ site.data.profile.name }} — Bioinformatics & Computational Biology">
+
+{% seo %}
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Person",
+      "@id": "{{ '/' | absolute_url }}#person",
+      "name": {{ site.data.profile.name | jsonify }},
+      "jobTitle": {{ site.data.profile.title | jsonify }},
+      "email": "mailto:{{ site.data.profile.links | where: 'key','email' | map: 'url' | first | remove: 'mailto:' }}",
+      "url": "{{ '/' | absolute_url }}",
+      "affiliation": { "@type": "Organization", "name": {{ site.data.profile.affiliation | jsonify }} },
+      "knowsAbout": {{ site.data.profile.about.keywords | jsonify }},
+      "sameAs": [
+        {%- for l in site.data.profile.links -%}
+          {%- if l.url != "" and l.key != "email" -%}{{ l.url | jsonify }}{%- unless forloop.last -%},{%- endunless -%}{%- endif -%}
+        {%- endfor -%}
+      ]
+    },
+    { "@type": "WebSite", "@id": "{{ '/' | absolute_url }}#website", "url": "{{ '/' | absolute_url }}", "name": {{ site.data.profile.name | jsonify }}, "publisher": { "@id": "{{ '/' | absolute_url }}#person" } }
+  ]
+}
+</script>
+
+<link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
+
+<!--
+  THEME OVERRIDES — generated from _data/settings.yml's `theme:` block.
+  Edit colors/fonts there, not here. This block simply re-declares the
+  same CSS custom properties that assets/css/style.css defines defaults
+  for, so changing settings.yml is enough to restyle the whole site.
+-->
+{% assign t = site.data.settings.theme %}
+<style>
+  :root {
+    --paper:   {{ t.color_paper }};
+    --surface: {{ t.color_surface }};
+    --ink:     {{ t.color_ink }};
+    --ink2:    {{ t.color_ink2 }};
+    --line:    {{ t.color_line }};
+    --teal:    {{ t.color_accent }};
+    --teal-dk: {{ t.color_accent_dark }};
+    --amber:   {{ t.color_amber }};
+    --A: {{ t.color_dot_a }};
+    --T: {{ t.color_dot_t }};
+    --G: {{ t.color_dot_g }};
+    --C: {{ t.color_dot_c }};
+    --serif: {{ t.font_serif }};
+    --sans:  {{ t.font_sans }};
+    --mono:  {{ t.font_mono }};
+    --max: {{ t.max_width }};
+  }
+</style>
+</head>
+<body>
+
+<a class="skip" href="#main">Skip to main content</a>
+
+<!-- ========== NAV ==========================================
+     Generated from _data/settings.yml's `sections` list — reorder,
+     rename, hide, or add nav items there, not here.
+-->
+<nav class="site-nav" aria-label="Primary navigation">
+  <div class="wrap nav-inner">
+    <a class="nav-brand" href="#hero">{{ site.data.profile.name }}</a>
+    <ul class="nav-links">
+      {% for s in site.data.settings.sections %}
+        {% if s.enabled and s.nav_hidden != true %}
+        <li><a href="#{{ s.id }}">{{ s.label }}</a></li>
+        {% endif %}
+      {% endfor %}
+    </ul>
+  </div>
+</nav>
+
+{{ content }}
+
+<!-- ========== FOOTER ======================================= -->
+{% assign f = site.data.settings.footer %}
+{% if f.year_mode == "manual" %}
+  {% assign footer_year = f.manual_year %}
+{% else %}
+  {% assign footer_year = "now" | date: "%Y" %}
+{% endif %}
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-inner">
+      <p>&copy; {{ footer_year }} {{ site.data.profile.footer.copyright_html }}</p>
+      <ul class="footer-links">
+        {% for l in site.data.profile.links %}
+          {% if l.show_in_footer and l.url != "" %}
+          <li><a href="{{ l.url }}">{{ l.label }}</a></li>
+          {% endif %}
+        {% endfor %}
+      </ul>
+    </div>
+    <p class="footer-note">{{ site.data.profile.footer.note }}</p>
+  </div>
+</footer>
+
+<!-- Feature flags from _data/settings.yml, read by assets/js/site.js
+     so toggling a feature there doesn't require touching any JS. -->
+<script>
+  window.SITE_FEATURES = {{ site.data.settings.features | jsonify }};
+</script>
+<script src="{{ '/assets/js/site.js' | relative_url }}"></script>
+
+</body>
+</html>

@@ -1,0 +1,105 @@
+---
+layout: default
+---
+{% assign p = site.data.profile %}
+{% assign empty_list = "" | split: "," %}
+{% assign pubs = site.data.publications | default: empty_list %}
+{% assign s = site.data.settings %}
+
+<!-- ========== HERO =========================================
+     Toggle with settings.yml -> hero.enabled
+-->
+{% if s.hero.enabled %}
+<section class="hero" id="hero">
+  <div class="wrap">
+    <div class="hero-grid">
+      <div>
+        <p class="eyebrow" style="margin-bottom:.75rem">{{ p.hero.eyebrow }}</p>
+        <h1>{{ p.hero.headline_html }}</h1>
+        <p class="lede" style="margin-top:1rem">{{ p.hero.lede_html }}</p>
+        <div class="hero-actions" style="margin-top:1.75rem">
+          <a class="btn" href="#publications">View publications</a>
+          <a class="btn btn-ghost" href="#contact">Start a collaboration</a>
+          <a class="btn btn-ghost" href="{{ p.cv_file | relative_url }}">Download CV</a>
+        </div>
+      </div>
+      <div class="portrait-wrap" aria-hidden="true">
+        {% if s.portrait.mode == "image" %}
+          <img src="{{ s.portrait.image_path | relative_url }}" alt="{{ s.portrait.image_alt }}" style="width:100%;height:100%;object-fit:cover;border-radius:50%">
+        {% else %}
+          <span class="portrait-placeholder">{{ p.portrait_initials }}</span>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</section>
+{% endif %}
+
+<!-- ========== Build-time computations shared by section includes -->
+{% assign sorted_by_cites = pubs | sort: 'citations' | reverse %}
+{% assign h_index = 0 %}
+{% assign total_citations = 0 %}
+{% assign i10_index = 0 %}
+{% assign first_author_count = 0 %}
+{% for pub in pubs %}
+  {% assign c = pub.citations | default: 0 %}
+  {% assign total_citations = total_citations | plus: c %}
+  {% if c >= 10 %}{% assign i10_index = i10_index | plus: 1 %}{% endif %}
+  {% assign first_author = pub.authors | first %}
+  {% if first_author contains "Chauhan" %}{% assign first_author_count = first_author_count | plus: 1 %}{% endif %}
+{% endfor %}
+{% for pub in sorted_by_cites %}
+  {% assign c = pub.citations | default: 0 %}
+  {% assign rank = forloop.index %}
+  {% if c >= rank %}{% assign h_index = rank %}{% endif %}
+{% endfor %}
+{% assign years_active = "now" | date: "%Y" | minus: p.research_start_year %}
+{% assign pubs_sorted = pubs | sort: 'year' | reverse %}
+{% assign pub_years = pubs | map: 'year' | uniq | sort | reverse %}
+
+<main id="main">
+<!-- ========== SECTIONS =====================================
+     Rendered generically from settings.yml's `sections` list:
+     reorder, rename, hide, or restyle (dot color) there — no HTML
+     edits needed. Each section's actual markup lives in
+     _includes/sections/{id}.html.
+-->
+{% for sec in s.sections %}
+  {% if sec.enabled %}
+  {% case sec.dot %}
+    {% when 'a' %}{% assign dot_title = 'Adenine' %}
+    {% when 't' %}{% assign dot_title = 'Thymine' %}
+    {% when 'g' %}{% assign dot_title = 'Guanine' %}
+    {% when 'c' %}{% assign dot_title = 'Cytosine' %}
+    {% else %}{% assign dot_title = '' %}
+  {% endcase %}
+  <section class="section" id="{{ sec.id }}">
+    <div class="wrap">
+      <div class="sec-heading"><span class="bp-dot bp-{{ sec.dot | upcase }}" title="{{ dot_title }}"></span><h2>{{ sec.heading }}</h2></div>
+
+      {% case sec.id %}
+        {% when 'about' %}
+          {% include "sections/about.html" p=p %}
+        {% when 'metrics' %}
+          {% include "sections/metrics.html" p=p pub_count=pubs.size total_citations=total_citations h_index=h_index i10_index=i10_index first_author_count=first_author_count years_active=years_active %}
+        {% when 'research' %}
+          {% include "sections/research.html" p=p %}
+        {% when 'publications' %}
+          {% include "sections/publications.html" p=p pubs_sorted=pubs_sorted years=pub_years features=s.features %}
+        {% when 'software' %}
+          {% include "sections/software.html" p=p %}
+        {% when 'presentations' %}
+          {% include "sections/presentations.html" p=p %}
+        {% when 'honors' %}
+          {% include "sections/honors.html" p=p %}
+        {% when 'beyond' %}
+          {% include "sections/beyond.html" p=p %}
+        {% when 'contact' %}
+          {% include "sections/contact.html" p=p %}
+      {% endcase %}
+
+    </div>
+  </section>
+  {% endif %}
+{% endfor %}
+</main>

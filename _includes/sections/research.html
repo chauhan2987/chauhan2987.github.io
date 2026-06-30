@@ -1,0 +1,17 @@
+{% assign p = include.p %}
+<p class="lede" style="margin-bottom:1.75rem">Current and recent projects in kidney and prostate cancer genomics and outcomes research.</p>
+<ul class="card-grid" style="margin-bottom:2rem">
+  {% for proj in p.research_projects %}
+  <li class="card">
+    <p class="card-meta">{{ proj.date_range }}{% if proj.tags %} · {{ proj.tags | join: ' · ' }}{% endif %}</p>
+    <h3>{{ proj.title }}</h3>
+    <p>{{ proj.description }}</p>
+  </li>
+  {% endfor %}
+</ul>
+<h3 style="font-family:var(--serif);margin-bottom:1rem">Research timeline</h3>
+<ul class="timeline">
+  {% for t in p.research_timeline %}
+  <li><span class="when">{{ t.when }}</span><strong>{{ t.strong }}</strong> — {{ t.rest }}</li>
+  {% endfor %}
+</ul>

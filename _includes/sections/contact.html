@@ -1,0 +1,12 @@
+{% assign p = include.p %}
+<p class="lede" style="margin-bottom:1.75rem">{{ p.contact_lede_html }}</p>
+<div class="contact-grid">
+  {% for l in p.links %}
+    {% if l.show_in_contact and l.url != "" %}
+    <div class="contact-card">
+      <p class="contact-label">{{ l.label }}</p>
+      <a href="{{ l.url }}">{{ l.display | default: l.label }}</a>
+    </div>
+    {% endif %}
+  {% endfor %}
+</div>

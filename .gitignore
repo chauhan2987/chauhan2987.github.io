@@ -1,0 +1,11 @@
+_site/
+.sass-cache/
+.jekyll-cache/
+.jekyll-metadata
+vendor/
+.bundle/
+.DS_Store
+
+# Generated from _data/publications.bib by scripts/bib_to_yaml.py —
+# do not edit or commit this; it's regenerated on every build.
+_data/publications.yml

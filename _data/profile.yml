@@ -1,0 +1,337 @@
+# =============================================================
+# Edit this file to update almost everything on the site except
+# the publications list (that's in _data/publications.yml).
+#
+# This is plain YAML — indentation matters, but there's no special
+# syntax to learn beyond "key: value" and "- item" for lists.
+# =============================================================
+
+name: "Pankaj Kumar Chauhan, PhD"
+title: "Postdoctoral Fellow, Genitourinary Medical Oncology — Research"
+affiliation: "The University of Texas MD Anderson Cancer Center"
+research_start_year: 2014
+portrait_initials: "PC"
+cv_file: "/cv.pdf"   # drop your real CV PDF at the project root as cv.pdf
+
+# ---- Links -------------------------------------------------------
+# Leave url blank ("") to hide a link everywhere automatically — nothing
+# else needs to change. show_in_contact / show_in_footer / show_in_sidebar
+# control where each link appears.
+links:
+  - key: email
+    label: Email
+    url: "mailto:PKChauhan@mdanderson.org"
+    display: "PKChauhan@mdanderson.org"
+    show_in_contact: true
+    show_in_footer: false
+    show_in_sidebar: false
+  - key: orcid
+    label: ORCID
+    url: ""
+    display: ""
+    show_in_contact: true
+    show_in_footer: true
+    show_in_sidebar: true
+  - key: scholar
+    label: Google Scholar
+    url: "https://scholar.google.com/citations?user=kDD-Jz4AAAAJ"
+    display: "Scholar profile"
+    show_in_contact: true
+    show_in_footer: true
+    show_in_sidebar: true
+  - key: researchgate
+    label: ResearchGate
+    url: "https://www.researchgate.net/profile/Pankaj_Chauhan14"
+    display: "ResearchGate profile"
+    show_in_contact: true
+    show_in_footer: false
+    show_in_sidebar: true
+  - key: github
+    label: GitHub
+    url: "https://github.com/chauhan2987"
+    display: "@chauhan2987"
+    show_in_contact: true
+    show_in_footer: true
+    show_in_sidebar: true
+  - key: linkedin
+    label: LinkedIn
+    url: "https://www.linkedin.com/in/chauhan2987"
+    display: "linkedin.com/in/chauhan2987"
+    show_in_contact: true
+    show_in_footer: true
+    show_in_sidebar: true
+  - key: pubmed
+    label: PubMed
+    url: "https://pubmed.ncbi.nlm.nih.gov/?term=Chauhan+P+K"
+    display: "Publications"
+    show_in_contact: true
+    show_in_footer: false
+    show_in_sidebar: true
+
+# ---- Nav -----------------------------------------------------------
+# Nav links are now generated automatically from _data/settings.yml's
+# `sections` list (reorder/rename/hide sections there — it drives both
+# the nav menu and the page itself, so they can never drift out of sync).
+
+# ---- Hero ------------------------------------------------------------
+hero:
+  eyebrow: "Bioinformatics · Cancer Genomics · Genitourinary Oncology"
+  headline_html: "Finding the genomic signal<br>behind kidney and prostate <em>cancer outcomes.</em>"
+  lede_html: >
+    Pankaj Kumar Chauhan, PhD is a postdoctoral fellow in Genitourinary
+    Medical Oncology — Research at UT MD Anderson Cancer Center, building
+    bioinformatics pipelines for germline risk-variant discovery, RNA-seq
+    analysis, and body-composition outcomes research in renal medullary
+    carcinoma, kidney cancer, and prostate cancer.
+
+# ---- About -----------------------------------------------------------
+about:
+  paragraphs_html:
+    - >
+      I am a postdoctoral fellow in <strong>Genitourinary Medical Oncology
+      — Research</strong> at The University of Texas MD Anderson Cancer
+      Center, working on the genomics and bioinformatics of kidney and
+      prostate cancer. My current work spans the identification of
+      <strong>germline risk variants</strong> in renal medullary carcinoma
+      and other kidney cancers, RNA-seq analysis of preclinical
+      drug-response models, and the influence of <strong>body
+      composition</strong> on outcomes in immunotherapy and hormone-therapy
+      cohorts.
+    - >
+      I trained as a computational/structural biologist — my PhD at the
+      Tata Institute of Fundamental Research used molecular dynamics,
+      network analysis, and transcriptome data to study LIM-domain protein
+      structure and cardiomyopathy genetics, and I previously worked in
+      plant systems biology and radiation-stress proteomics.
+    - >
+      I care about <em>reproducible</em> pipelines, <em>careful</em>
+      statistical practice, and translating genomic findings into
+      something a clinical collaborator can actually use.
+  keywords:
+    - Bioinformatics
+    - Computational Biology
+    - Computational Oncology
+    - Cancer Genomics
+    - Genitourinary Oncology
+    - Renal Medullary Carcinoma
+    - Kidney Cancer
+    - Prostate Cancer
+    - Germline Variant Analysis
+    - Whole Exome Sequencing
+    - Whole Genome Sequencing
+    - RNA Sequencing
+    - Body Composition Analysis
+    - Precision Medicine
+    - Precision Oncology
+    - Network Biology
+    - Structural Bioinformatics
+    - Molecular Dynamics
+    - Protein Structure
+    - Cardiomyopathy Genetics
+    - Systems Biology
+    - Translational Research
+    - Clinical Genomics
+    - Cancer Biomarkers
+    - Reproducible Genomics
+    - Biomedical Data Science
+    - Data Science
+    - Genomic Medicine
+    - Research Software Engineering
+    - High Performance Computing
+  position:
+    - Postdoctoral Fellow
+    - Genitourinary Medical Oncology — Research
+    - UT MD Anderson Cancer Center
+  education:
+    - "PhD, Bioinformatics/Biological Sciences — Tata Institute of Fundamental Research (2022)"
+    - "Integrated MSc, Systems Biology — University of Hyderabad (2015, First Class with Distinction)"
+  skills:
+    - "RNA-seq & WES pipelines"
+    - "Germline variant calling/annotation"
+    - "Linux & bash scripting"
+    - "R · Python"
+    - "Molecular dynamics / structural modelling"
+
+# ---- Research impact note ---------------------------------------------
+metrics_note: >
+  Citation, h-index, and i10-index figures are computed from the
+  "citations" field on each entry in _data/publications.yml — update that
+  file and these numbers update themselves on the next build.
+
+# ---- Research projects & timeline --------------------------------------
+research_projects:
+  - date_range: "Dec 2024 – present"
+    tags: ["Translational"]
+    title: "Germline risk variants in kidney cancer"
+    description: "Analysis and pipeline development to identify germline risk variants in renal medullary carcinoma–unclassified (RCCU-MP) and other kidney cancers, with Dr. Pavlos Msaouel."
+  - date_range: "Jul 2025 – present"
+    tags: ["Translational"]
+    title: "Body composition in the C-COLA cohort"
+    description: "Body composition analysis of the C-COLA cohort, with Dr. Andrew Hahn."
+  - date_range: "Jul 2024 – Sep 2025"
+    tags: ["Translational"]
+    title: "Cardiovascular risk in prostate cancer"
+    description: "Analysis of cardiovascular risk in localized high-risk/locally advanced prostate cancer (LHRPCa), with Dr. Andrew Hahn."
+  - date_range: "Sep 2024 – Apr 2025"
+    tags: ["Deployment"]
+    title: "Body composition & response to immunotherapy"
+    description: "Body composition and response to nivolumab/ipilimumab in metastatic clear cell renal cell carcinoma (mccRCC)."
+  - date_range: "Dec 2023 – Jan 2025"
+    tags: ["Methods", "Infrastructure"]
+    title: "Preclinical RMC/FH-deficient RCC therapeutics"
+    description: "RNA-seq analysis and pipeline development for a study of differential efficacy of bevacizumab and erlotinib in preclinical models of renal medullary carcinoma and fumarate-hydratase-deficient RCC."
+
+research_timeline:
+  - when: "Nov 2023 – present"
+    strong: "Postdoctoral Fellow"
+    rest: "Genitourinary Medical Oncology – Research, Cancer Medicine, UT MD Anderson Cancer Center."
+  - when: "Sep 2024 – Aug 2025"
+    strong: "IDSO Fellow, Data Science"
+    rest: "Institute for Data Science in Oncology, UT MD Anderson Cancer Center."
+  - when: "Oct 2022 – Sep 2023"
+    strong: "Research Associate, Bioinformatics"
+    rest: "Institute of Bioinformatics and Applied Biotechnology, Bengaluru, India."
+  - when: "2017 – Jul 2022"
+    strong: "PhD, Bioinformatics/Biological Sciences"
+    rest: "Tata Institute of Fundamental Research, Mumbai, India."
+  - when: "Aug 2015 – Jul 2016"
+    strong: "Research Assistant, Computational/Systems Biology"
+    rest: "Jawaharlal Nehru University, New Delhi, India."
+
+# ---- Software ----------------------------------------------------------
+software:
+  intro_html: 'Code accompanying published analyses, on <a href="https://github.com/chauhan7892">GitHub</a>.'
+  repos:
+    - meta: "Python"
+      name: "Saturation_Mutagenesis"
+      description: "Saturation mutagenesis analysis code underlying the CSRP3/LIM-domain virtual mutagenesis study."
+      url: "https://github.com/chauhan7892/Saturation_Mutagenesis"
+    - meta: "Shell · Nextflow"
+      name: "SM_Nextflow"
+      description: "Nextflow implementation of the Saturation_Mutagenesis workflow for reproducible runs."
+      url: "https://github.com/chauhan7892/SM_Nextflow"
+    - meta: "Python"
+      name: "CSRP3_mutational"
+      description: "Mutational analysis code for the CSRP3 LIM-domain cardiomyopathy work."
+      url: "https://github.com/chauhan7892/CSRP3_mutational"
+    - meta: "Python"
+      name: "CardiacDiseasome"
+      description: "Network analysis code for the cardiomyopathy diseasome study (Sci Rep 2022)."
+      url: "https://github.com/chauhan7892/CardiacDiseasome"
+    - meta: "Python"
+      name: "Cardiac_Mutant"
+      description: "Supporting code for cardiomyopathy mutation modelling."
+      url: "https://github.com/chauhan7892/Cardiac_Mutant"
+    - meta: "Python · NCBS"
+      name: "Domain_Swapping"
+      description: "Analysis code from early graduate work on protein domain swapping (Inbix'17 poster)."
+      url: "https://github.com/chauhan7892/Domain_Swapping"
+
+# ---- Presentations -------------------------------------------------------
+presentations:
+  international:
+    - when: "Sep 2022 · Sitges, Barcelona, Spain"
+      title: "Integrative network analysis interweaves the missing link in cardiomyopathy disease"
+      venue: "Poster presentation — 21st European Conference on Computational Biology (ECCB)"
+  national:
+    - when: "Aug 2023 · Pune, India"
+      title: "LIM domain-wide comprehensive virtual mutagenesis in cardiomyopathy causing CSRP3 protein"
+      venue: "Poster (presenter) — Macromolecular Assemblies: Structure, Function, and Evolution, IISER Pune"
+    - when: "Nov 2017 · Jaipur, India"
+      title: "Domain swapping in proteins"
+      venue: "Poster (presenter) — Inbix'17: Indian Conference on Bioinformatics, Birla Institute of Scientific Research"
+  local:
+    - when: "Jul 2024 · MD Anderson Cancer Center"
+      title: "Introduction to Linux and bash scripting"
+      venue: "Invited talk/seminar — Biostatistics and Bioinformatics Cafe"
+    - when: "Jan 2022 · NCBS-TIFR, Bengaluru, India"
+      title: "LIM domain-wide comprehensive virtual mutagenesis provides structural rationale for cardiomyopathy mutations in CSRP3"
+      venue: 'Poster presentation — Annual Talks "Facets in Biology"'
+    - when: "Jan 2020 · NCBS-TIFR, Bengaluru, India"
+      title: "Modelling and molecular dynamics of CSRP3 protein"
+      venue: 'Poster presentation — Annual Talks "Circle of Life"'
+
+# ---- Honors / committee / societies / licenses ---------------------------
+honors:
+  - when: "Sep 2022"
+    title: "SERB International Travel Grant"
+    org: "Science and Engineering Research Board (SERB), DST, Govt. of India — to attend ECCB 2022"
+  - when: "Dec 2018 – present"
+    title: "Joint CSIR-UGC NET & Junior Research Fellowship"
+    org: "Council of Scientific & Industrial Research / University Grants Commission, India"
+  - when: "Jul 2016 – present"
+    title: "Bioinformatics National Certification (BINC)"
+    org: "Department of Biotechnology, Government of India"
+  - when: "Jun – Jul 2014"
+    title: "Summer Research Fellowship (SRFP)"
+    org: "Indian Academy of Sciences, Indian National Science Academy, and National Academy of Sciences, India"
+
+committee_service:
+  - date_range: "Sep 2025 – present"
+    title: "Career Advancement Subcommittee Chair"
+    description: "Postdoctoral Association Executive Committee, Professional Development Team, UT MD Anderson Cancer Center."
+  - date_range: "Dec 2021 – Nov 2022"
+    title: "Housing Committee — Student Member"
+    description: "Designated Institutional Committee, NCBS-TIFR, Bengaluru, India."
+  - date_range: "Dec 2021 – Nov 2022"
+    title: "Catering Committee — Student Member"
+    description: "Designated Institutional Committee, NCBS-TIFR, Bengaluru, India."
+
+societies_and_review:
+  - "National Postdoctoral Association (NPDA) — Mar 2024 – present"
+  - "International Society for Computational Biology (ISCB) — Jun 2022 – Jun 2023"
+  - "Reviewer, Frontiers in Pediatrics — May 2025 – present"
+  - "Judge, Catalyst program poster session, MD Anderson — Aug 2024"
+
+licenses:
+  - "Trainee Leadership Certificate Program — Leadership Institute (2024)"
+  - "LEAD Productivity for Trainees — Leadership Institute (2024)"
+  - "Universal Skills for LEADing Self and Above — High Reliability — Leadership Institute (2024)"
+  - "DevelopME in Professionalism (FY24) — Leadership Institute (2024)"
+
+# ---- Beyond the research (placeholder — make this your own) -------------
+beyond:
+  intro_html: "Research is a long game, and the rest of life is what makes it sustainable."
+  placeholder_note: "(Placeholder section — swap in your own real interests, results, and photos below.)"
+  running:
+    intro_html: "Long-distance running keeps the analytical mind quiet. Selected finishes:"
+    items:
+      - meta: "2025"
+        title: "Boston Marathon"
+        description: "3:42:11 — first Boston qualifier."
+      - meta: "2024"
+        title: "Chicago Marathon"
+        description: "3:48:05"
+      - meta: "2023"
+        title: "Local Half Marathon"
+        description: "1:39:20"
+  painting:
+    intro_html: "Watercolour and acrylic landscapes — a deliberately analogue counterweight to screen time."
+    items:
+      - meta: "2025 · Watercolour series"
+        title: "Coastline studies"
+        description: "Plein-air watercolour series, Pacific coast."
+      - meta: "2024 · Acrylic on canvas"
+        title: "Mountain light"
+        description: "Golden-hour studies from field sketches."
+  gallery:
+    - icon: "🏃"
+      label: "Marathon finish photos"
+    - icon: "🎨"
+      label: "Paintings"
+    - icon: "🌊"
+      label: "Open-water swims"
+  other_interests:
+    - "Open-water swimming"
+    - "Chess (online rapid)"
+    - "Science communication & blogging"
+    - "Hiking & trail running"
+
+# ---- Contact / footer ----------------------------------------------------
+contact_lede_html: >
+  Open to research collaborations, mentorship conversations, and questions
+  about kidney/prostate cancer genomics and bioinformatics.
+
+footer:
+  copyright_html: "Pankaj Kumar Chauhan, PhD · UT MD Anderson Cancer Center"
+  note: "Built with Jekyll, hosted free on GitHub Pages. Content lives in _data/profile.yml and _data/publications.yml. Site structure/theme controlled by _data/settings.yml."

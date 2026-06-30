@@ -1,0 +1,114 @@
+# =============================================================
+# Site-wide configuration: visual theme, which sections appear and
+# in what order, and feature on/off switches. This is the file to
+# edit if you want to reorder sections, hide one entirely, change
+# colors/fonts, or turn off search/filtering/etc. — without touching
+# any HTML, CSS, or JS.
+#
+# Content itself (your bio, projects, publications) still lives in
+# profile.yml / publications.yml. This file controls structure and
+# appearance, not wording.
+# =============================================================
+
+# ---- Theme -----------------------------------------------------
+# These become CSS custom properties (see _layouts/default.html),
+# overriding the defaults baked into assets/css/style.css. Any valid
+# CSS color value works (hex, rgb(), hsl(), named colors).
+theme:
+  color_paper:    "#F7F9F8"   # page background
+  color_surface:  "#FFFFFF"   # card/input backgrounds
+  color_ink:      "#141E2B"   # primary text
+  color_ink2:     "#4A5568"   # secondary/muted text
+  color_line:     "#DDE3DF"   # borders/dividers
+  color_accent:        "#0D7377"   # primary accent (buttons, links, active nav)
+  color_accent_dark:   "#095C60"   # accent hover/dark variant
+  color_amber:    "#C17D11"   # used for citation-count highlight
+  # "base-pair" accent dots beside section headings — purely decorative,
+  # each section picks one of these four via sections[].dot below
+  color_dot_a: "#4CAF82"
+  color_dot_t: "#E05A5A"
+  color_dot_g: "#5B8FD4"
+  color_dot_c: "#B06DF0"
+  font_serif: 'Georgia, "Bitstream Charter", "Times New Roman", serif'
+  font_sans:  'system-ui, -apple-system, "Segoe UI", Roboto, sans-serif'
+  font_mono:  'ui-monospace, "SF Mono", Menlo, Consolas, monospace'
+  max_width: "60rem"          # overall content column width
+
+# ---- Hero -------------------------------------------------------
+hero:
+  enabled: true
+
+# ---- Portrait -----------------------------------------------------
+# mode: "initials" shows a plain circle with portrait_initials (from
+# profile.yml). mode: "image" shows an actual photo instead — drop
+# the file at the project root and point image_path at it.
+portrait:
+  mode: "initials"        # "initials" | "image"
+  image_path: "/portrait.jpg"
+  image_alt: "Portrait photo"
+
+# ---- Sections -----------------------------------------------------
+# Controls which sections render, their order, nav label, heading
+# text, and decorative dot color (a/t/g/c, matching the theme colors
+# above). Reorder this list to reorder the page. Set enabled: false
+# to remove a section from both the nav and the page entirely.
+sections:
+  - id: about
+    label: "About"
+    heading: "About"
+    dot: a
+    enabled: true
+  - id: metrics
+    label: "Research impact"
+    heading: "Research impact"
+    dot: t
+    enabled: true
+    nav_hidden: true   # exclude from nav menu but still show on page
+  - id: research
+    label: "Research"
+    heading: "Research"
+    dot: g
+    enabled: true
+  - id: publications
+    label: "Publications"
+    heading: "Publications"
+    dot: c
+    enabled: true
+  - id: software
+    label: "Software"
+    heading: "Software"
+    dot: a
+    enabled: true
+  - id: presentations
+    label: "Presentations"
+    heading: "Presentations & talks"
+    dot: c
+    enabled: true
+  - id: honors
+    label: "Honors & Service"
+    heading: "Honors & service"
+    dot: g
+    enabled: true
+  - id: beyond
+    label: "Beyond the research"
+    heading: "Beyond the research"
+    dot: a
+    enabled: true
+  - id: contact
+    label: "Contact"
+    heading: "Contact"
+    dot: a
+    enabled: true
+
+# ---- Feature toggles -----------------------------------------------
+features:
+  publication_search: true     # show the search box on Publications
+  publication_filters: true    # show the year/type filter dropdowns
+  bibtex_export: true          # show the "BibTeX" button on each publication
+  scroll_reveal: true          # fade-in sections as you scroll
+  scrollspy_nav: true          # highlight the current section in the nav bar
+
+# ---- Footer ---------------------------------------------------------
+footer:
+  year_mode: "auto"     # "auto" uses the current year at build time; "manual" uses manual_year below
+  manual_year: 2026
