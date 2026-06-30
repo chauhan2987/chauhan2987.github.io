@@ -60,16 +60,16 @@
       {% if feat.bibtex_export %}<button class="bibtex-btn" onclick="toggleBibtex(this)">BibTeX</button>{% endif %}
     </div>
     {% if feat.bibtex_export %}
-    <pre class="bibtex-block">@{% if pub.type == 'conference' %}inproceedings{% else %}article{% endif %}{ {{- pub.key -}},
-  title   = {{ '{' }}{{ pub.title }}{{ '}' }},
-  author  = {{ '{' }}{{ pub.authors | join: ' and ' }}{{ '}' }},
-{% if pub.journal %}  journal = {{ '{' }}{{ pub.journal }}{{ '}' }},
-{% endif %}{% if pub.venue %}  booktitle = {{ '{' }}{{ pub.venue }}{{ '}' }},
-{% endif %}  year    = {{ '{' }}{{ pub.year }}{{ '}' }}{% if pub.doi %},
-  doi     = {{ '{' }}{{ pub.doi }}{{ '}' }}{% endif %}{% if pub.pmid %},
-  pmid    = {{ '{' }}{{ pub.pmid }}{{ '}' }}{% endif %}
+    <pre class="bibtex-block">@{% if pub.type == 'conference' %}inproceedings{% else %}article{% endif %}&#123;{{ pub.key }},
+  title   = &#123;{{ pub.title }}&#125;,
+  author  = &#123;{{ pub.authors | join: ' and ' }}&#125;,
+{% if pub.journal %}  journal = &#123;{{ pub.journal }}&#125;,
+{% endif %}{% if pub.venue %}  booktitle = &#123;{{ pub.venue }}&#125;,
+{% endif %}  year    = &#123;{{ pub.year }}&#125;{% if pub.doi %},
+  doi     = &#123;{{ pub.doi }}&#125;{% endif %}{% if pub.pmid %},
+  pmid    = &#123;{{ pub.pmid }}&#125;{% endif %}
 
-}</pre>
+&#125;</pre>
     {% endif %}
   </li>
   {% endfor %}
