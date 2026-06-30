@@ -296,17 +296,17 @@ beyond:
   running:
     intro_html: "Long-distance running keeps the analytical mind quiet. Selected finishes:"
     items:
-      - meta: "2025"
-        title: "Boston Marathon"
+      - meta: "2022"
+        title: "TCS Bengaluru 10K"
         description: "3:42:11 — first Boston qualifier."
-      - meta: "2024"
-        title: "Chicago Marathon"
+      - meta: "2022"
+        title: "Sriram Bengaluru Half Marathon"
         description: "3:48:05"
-      - meta: "2023"
-        title: "Local Half Marathon"
-        description: "1:39:20"
+      - meta: "2021"
+        title: "Freedom Run 5K"
+        description: "00:18:20"
   painting:
-    intro_html: "Watercolour and acrylic landscapes — a deliberately analogue counterweight to screen time."
+    intro_html: "Watercolour landscapes — a deliberately analogue counterweight to screen time."
     items:
       - meta: "2025 · Watercolour series"
         title: "Coastline studies"
