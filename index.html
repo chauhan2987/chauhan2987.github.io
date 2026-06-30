@@ -6,6 +6,7 @@ layout: default
 {% assign pubs = site.data.publications | default: empty_list %}
 {% assign s = site.data.settings %}
 
+
 <!-- ========== HERO =========================================
      Toggle with settings.yml -> hero.enabled
 -->
@@ -79,23 +80,24 @@ layout: default
 
       {% case sec.id %}
         {% when 'about' %}
-          {% include "sections/about.html" p=p %}
+        {% include sections/about.html p=p %}
+
         {% when 'metrics' %}
-          {% include "sections/metrics.html" p=p pub_count=pubs.size total_citations=total_citations h_index=h_index i10_index=i10_index first_author_count=first_author_count years_active=years_active %}
+          {% include sections/metrics.html p=p pub_count=pubs.size total_citations=total_citations h_index=h_index i10_index=i10_index first_author_count=first_author_count years_active=years_active %}
         {% when 'research' %}
-          {% include "sections/research.html" p=p %}
+          {% include sections/research.html p=p %}
         {% when 'publications' %}
-          {% include "sections/publications.html" p=p pubs_sorted=pubs_sorted years=pub_years features=s.features %}
+          {% include sections/publications.html p=p pubs_sorted=pubs_sorted years=pub_years features=s.features %}
         {% when 'software' %}
-          {% include "sections/software.html" p=p %}
+          {% include sections/software.html p=p %}
         {% when 'presentations' %}
-          {% include "sections/presentations.html" p=p %}
+          {% include sections/presentations.html p=p %}
         {% when 'honors' %}
-          {% include "sections/honors.html" p=p %}
+          {% include sections/honors.html p=p %}
         {% when 'beyond' %}
-          {% include "sections/beyond.html" p=p %}
+          {% include sections/beyond.html p=p %}
         {% when 'contact' %}
-          {% include "sections/contact.html" p=p %}
+          {% include sections/contact.html p=p %}
       {% endcase %}
 
     </div>
